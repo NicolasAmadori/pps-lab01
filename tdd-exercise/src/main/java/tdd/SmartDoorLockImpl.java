@@ -32,7 +32,10 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (!isLocked){
             throw new IllegalStateException("Impossible to unlock the door lock, it is already locked.");
         }
-        isLocked = false;
+
+        if(this.pin == pin){
+            isLocked = false;
+        }
     }
 
     @Override

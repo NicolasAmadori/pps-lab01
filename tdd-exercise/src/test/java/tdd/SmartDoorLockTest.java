@@ -103,4 +103,12 @@ public class SmartDoorLockTest {
         lock.unlock(RANDOM_VALID_PIN_1);
         assertFalse(lock.isLocked());
     }
+
+    @Test
+    public void testLockAndInvalidUnlock() {
+        lock.setPin(RANDOM_VALID_PIN_1);
+        lock.lock();
+        lock.unlock(RANDOM_VALID_PIN_2);
+        assertTrue(lock.isLocked());
+    }
 }
