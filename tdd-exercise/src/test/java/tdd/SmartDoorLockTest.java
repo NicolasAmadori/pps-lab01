@@ -34,4 +34,9 @@ public class SmartDoorLockTest {
     public void testIfInitiallyBlocked() {
         assertFalse(lock.isBlocked());
     }
+
+    @Test
+    public void testInitialFailedAttempts() {
+        assertEquals(lock.getFailedAttempts(), 0);
+    }
 }
