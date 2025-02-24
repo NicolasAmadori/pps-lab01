@@ -81,4 +81,11 @@ public class SmartDoorLockTest {
         lock.setPin(RANDOM_VALID_PIN_1);
         assertDoesNotThrow(() -> lock.lock());
     }
+
+    @Test
+    public void testSetPinAndLockState() {
+        lock.setPin(RANDOM_VALID_PIN_1);
+        lock.lock();
+        assertTrue(lock.isLocked());
+    }
 }

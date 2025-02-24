@@ -9,10 +9,12 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     final int maxAttempts;
     private String pin;
+    private boolean isLocked = false;
 
     public SmartDoorLockImpl(final int maxAttempts) {
         this.maxAttempts = maxAttempts;
     }
+
     @Override
     public void setPin(String pin) {
         if (pin.length() != 4) {
@@ -34,11 +36,12 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (pin == null){
             throw new IllegalStateException("Impossible to lock the door lock if no pin is set.");
         }
+        isLocked = true;
     }
 
     @Override
     public boolean isLocked() {
-        return false;
+        return isLocked;
     }
 
     @Override
