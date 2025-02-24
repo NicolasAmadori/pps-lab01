@@ -1,6 +1,7 @@
 package tdd;
 
 import java.security.InvalidParameterException;
+import java.util.Objects;
 
 public class SmartDoorLockImpl implements SmartDoorLock{
 
@@ -32,10 +33,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (!isLocked){
             throw new IllegalStateException("Impossible to unlock the door lock, it is already locked.");
         }
-
-        if(this.pin == pin){
-            isLocked = false;
-        }
+        isLocked = !Objects.equals(this.pin, pin);
     }
 
     @Override
