@@ -14,7 +14,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void unlock(int pin) {
-
+        throw new IllegalStateException("Impossible to unlock the lock, it is already unlocked.");
     }
 
     @Override

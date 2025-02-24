@@ -40,4 +40,9 @@ public class SmartDoorLockTest {
     public void testInitialFailedAttempts() {
         assertEquals(lock.getFailedAttempts(), INITIAL_FAILED_ATTEMPS);
     }
+
+    @Test
+    public void testUnlockWithNoPinSet() {
+        assertThrows(IllegalStateException.class, () -> lock.unlock(1234));
+    }
 }
