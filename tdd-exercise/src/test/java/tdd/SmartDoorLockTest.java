@@ -7,17 +7,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
 
-
     public static final int MAX_ATTEMPTS = 5;
     SmartDoorLockImpl lock;
 
     @BeforeEach
-    public void test(){
+    public void beforeEach(){
         lock = new SmartDoorLockImpl(MAX_ATTEMPTS);
     }
 
     @Test
     public void testInitialState() {
         assertTrue(lock.isLocked());
+    }
+
+    @Test
+    public void testMaxAttemptsNumber() {
+        assertEquals(lock.getMaxAttempts(), MAX_ATTEMPTS);
     }
 }
