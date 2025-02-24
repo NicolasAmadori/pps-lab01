@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SmartDoorLockTest {
 
     public static final int MAX_ATTEMPTS = 5;
+    public static final int INITIAL_FAILED_ATTEMPS = 0;
     SmartDoorLockImpl lock;
 
     @BeforeEach
@@ -37,6 +38,6 @@ public class SmartDoorLockTest {
 
     @Test
     public void testInitialFailedAttempts() {
-        assertEquals(lock.getFailedAttempts(), 0);
+        assertEquals(lock.getFailedAttempts(), INITIAL_FAILED_ATTEMPS);
     }
 }
