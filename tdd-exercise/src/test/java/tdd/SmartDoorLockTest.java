@@ -12,7 +12,8 @@ public class SmartDoorLockTest {
     public static final int MAX_ATTEMPTS = 5;
     public static final int INITIAL_FAILED_ATTEMPS = 0;
 
-    public static final String RANDOM_VALID_PIN = "1234";
+    public static final String RANDOM_VALID_PIN_1 = "1234";
+    public static final String RANDOM_VALID_PIN_2 = "5678";
     public static final String RANDOM_INVALID_PIN_1 = "1";
     public static final String RANDOM_INVALID_PIN_2 = "12";
     public static final String RANDOM_INVALID_PIN_3 = "123";
@@ -52,7 +53,7 @@ public class SmartDoorLockTest {
 
     @Test
     public void testUnlockWithNoPinSet() {
-        assertThrows(IllegalStateException.class, () -> lock.unlock(RANDOM_VALID_PIN));
+        assertThrows(IllegalStateException.class, () -> lock.unlock(RANDOM_VALID_PIN_1));
     }
 
     @Test
@@ -73,5 +74,11 @@ public class SmartDoorLockTest {
                 () -> assertThrows(InvalidParameterException.class, () -> lock.setPin(RANDOM_INVALID_PIN_3)),
                 () -> assertThrows(InvalidParameterException.class, () -> lock.setPin(RANDOM_INVALID_PIN_4))
         );
+    }
+
+    @Test
+    public void testSetPinAndLock() {
+        lock.setPin(RANDOM_VALID_PIN_1);
+        assertDoesNotThrow(() -> lock.lock());
     }
 }

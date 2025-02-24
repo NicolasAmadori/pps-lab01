@@ -8,6 +8,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     public static final int MAX_VALID_PIN = 9999;
 
     final int maxAttempts;
+    private String pin;
 
     public SmartDoorLockImpl(final int maxAttempts) {
         this.maxAttempts = maxAttempts;
@@ -17,6 +18,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (pin.length() != 4) {
             throw new InvalidParameterException("Invalid pin. Pin must be 4 digit.");
         }
+        this.pin = pin;
     }
 
     @Override
@@ -29,7 +31,9 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void lock() {
-        throw new IllegalStateException("Impossible to lock the door lock if no pin is set.");
+        if (pin == null){
+            throw new IllegalStateException("Impossible to lock the door lock if no pin is set.");
+        }
     }
 
     @Override
