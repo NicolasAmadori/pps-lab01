@@ -3,6 +3,8 @@ package tdd;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.security.InvalidParameterException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
@@ -44,5 +46,15 @@ public class SmartDoorLockTest {
     @Test
     public void testUnlockWithNoPinSet() {
         assertThrows(IllegalStateException.class, () -> lock.unlock(1234));
+    }
+
+    @Test
+    public void testUnlockWithInvalidPin() {
+        assertAll(
+                () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(1)),
+                () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(12)),
+                () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(123)),
+                () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(12345))
+        );
     }
 }

@@ -1,5 +1,7 @@
 package tdd;
 
+import java.security.InvalidParameterException;
+
 public class SmartDoorLockImpl implements SmartDoorLock{
 
     final int maxAttempts;
@@ -14,6 +16,9 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void unlock(int pin) {
+        if (pin < 1000 || pin > 9999) {
+            throw new InvalidParameterException("Invalid pin. Pin must be 4 digit.");
+        }
         throw new IllegalStateException("Impossible to unlock the lock, it is already unlocked.");
     }
 
