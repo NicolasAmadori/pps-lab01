@@ -83,9 +83,16 @@ public class SmartDoorLockTest {
     }
 
     @Test
-    public void testSetPinAndLockState() {
+    public void testLockStateAfterLock() {
         lock.setPin(RANDOM_VALID_PIN_1);
         lock.lock();
         assertTrue(lock.isLocked());
+    }
+
+    @Test
+    public void testMultipleLock() {
+        lock.setPin(RANDOM_VALID_PIN_1);
+        lock.lock();
+        assertThrows(IllegalStateException.class, () -> lock.lock());
     }
 }
