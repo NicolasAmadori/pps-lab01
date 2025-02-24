@@ -13,13 +13,15 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         this.maxAttempts = maxAttempts;
     }
     @Override
-    public void setPin(int pin) {
-
+    public void setPin(String pin) {
+        if (pin.length() != 4) {
+            throw new InvalidParameterException("Invalid pin. Pin must be 4 digit.");
+        }
     }
 
     @Override
-    public void unlock(int pin) {
-        if (pin < MIN_VALID_PIN || pin > MAX_VALID_PIN) {
+    public void unlock(String pin) {
+        if (pin.length() != 4) {
             throw new InvalidParameterException("Invalid pin. Pin must be 4 digit.");
         }
         throw new IllegalStateException("Impossible to unlock the lock, it is already unlocked.");

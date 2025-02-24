@@ -12,11 +12,11 @@ public class SmartDoorLockTest {
     public static final int MAX_ATTEMPTS = 5;
     public static final int INITIAL_FAILED_ATTEMPS = 0;
 
-    public static final int RANDOM_VALID_PIN = 1234;
-    public static final int RANDOM_INVALID_PIN_1 = 1;
-    public static final int RANDOM_INVALID_PIN_2 = 12;
-    public static final int RANDOM_INVALID_PIN_3 = 123;
-    public static final int RANDOM_INVALID_PIN_4 = 12345;
+    public static final String RANDOM_VALID_PIN = "1234";
+    public static final String RANDOM_INVALID_PIN_1 = "1";
+    public static final String RANDOM_INVALID_PIN_2 = "12";
+    public static final String RANDOM_INVALID_PIN_3 = "123";
+    public static final String RANDOM_INVALID_PIN_4 = "12345";
 
     SmartDoorLockImpl lock;
 
@@ -62,6 +62,16 @@ public class SmartDoorLockTest {
                 () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(RANDOM_INVALID_PIN_2)),
                 () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(RANDOM_INVALID_PIN_3)),
                 () -> assertThrows(InvalidParameterException.class, () -> lock.unlock(RANDOM_INVALID_PIN_4))
+        );
+    }
+
+    @Test
+    public void testSetInvalidPin() {
+        assertAll(
+                () -> assertThrows(InvalidParameterException.class, () -> lock.setPin(RANDOM_INVALID_PIN_1)),
+                () -> assertThrows(InvalidParameterException.class, () -> lock.setPin(RANDOM_INVALID_PIN_2)),
+                () -> assertThrows(InvalidParameterException.class, () -> lock.setPin(RANDOM_INVALID_PIN_3)),
+                () -> assertThrows(InvalidParameterException.class, () -> lock.setPin(RANDOM_INVALID_PIN_4))
         );
     }
 }
