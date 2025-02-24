@@ -24,7 +24,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public boolean isLocked() {
-        return true;
+        return false;
     }
 
     @Override
