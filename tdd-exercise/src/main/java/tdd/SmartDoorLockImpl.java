@@ -28,7 +28,11 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (pin.length() != 4) {
             throw new InvalidParameterException("Invalid pin. Pin must be 4 digit.");
         }
-        throw new IllegalStateException("Impossible to unlock the lock, it is already unlocked.");
+
+        if (!isLocked){
+            throw new IllegalStateException("Impossible to unlock the door lock, it is already locked.");
+        }
+        isLocked = false;
     }
 
     @Override
