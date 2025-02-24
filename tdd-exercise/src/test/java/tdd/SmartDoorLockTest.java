@@ -29,4 +29,9 @@ public class SmartDoorLockTest {
     public void testLockWithNoPin() {
         assertThrows(IllegalStateException.class, () -> lock.lock());
     }
+
+    @Test
+    public void testIfInitiallyBlocked() {
+        assertFalse(lock.isBlocked());
+    }
 }
