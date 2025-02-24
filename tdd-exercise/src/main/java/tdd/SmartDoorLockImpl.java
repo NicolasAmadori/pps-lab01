@@ -19,7 +19,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void lock() {
-
+        throw new IllegalStateException("Impossible to lock the door lock if no pin is set.");
     }
 
     @Override

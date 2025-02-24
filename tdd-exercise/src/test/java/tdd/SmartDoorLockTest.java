@@ -24,4 +24,9 @@ public class SmartDoorLockTest {
     public void testMaxAttemptsNumber() {
         assertEquals(lock.getMaxAttempts(), MAX_ATTEMPTS);
     }
+
+    @Test
+    public void testLockWithNoPin() {
+        assertThrows(IllegalStateException.class, () -> lock.lock());
+    }
 }
