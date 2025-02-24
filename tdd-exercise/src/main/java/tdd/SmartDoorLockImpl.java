@@ -4,6 +4,9 @@ import java.security.InvalidParameterException;
 
 public class SmartDoorLockImpl implements SmartDoorLock{
 
+    public static final int MIN_VALID_PIN = 1000;
+    public static final int MAX_VALID_PIN = 9999;
+
     final int maxAttempts;
 
     public SmartDoorLockImpl(final int maxAttempts) {
@@ -16,7 +19,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void unlock(int pin) {
-        if (pin < 1000 || pin > 9999) {
+        if (pin < MIN_VALID_PIN || pin > MAX_VALID_PIN) {
             throw new InvalidParameterException("Invalid pin. Pin must be 4 digit.");
         }
         throw new IllegalStateException("Impossible to unlock the lock, it is already unlocked.");
