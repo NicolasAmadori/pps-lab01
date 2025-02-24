@@ -2,6 +2,8 @@ package tdd;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.security.InvalidParameterException;
 
@@ -112,8 +114,14 @@ public class SmartDoorLockTest {
         assertTrue(lock.isLocked());
     }
 
-    @Test
-    public void testInitialInvalidAttempt() {
-        assertEquals(lock.getFailedAttempts(), 0);
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4})
+    public void testInvalidAttempts(int attempts) {
+        lock.setPin(RANDOM_VALID_PIN_1);
+        lock.lock();
+        for (int i = 0; i < attempts; i++){
+            lock.unlock(RANDOM_VALID_PIN_2);
+        }
+        assertEquals(lock.getFailedAttempts(), attempts);
     }
 }

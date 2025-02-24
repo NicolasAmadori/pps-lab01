@@ -11,6 +11,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     final int maxAttempts;
     private String pin;
     private boolean isLocked = false;
+    private int invalidAttempts = 0;
 
     public SmartDoorLockImpl(final int maxAttempts) {
         this.maxAttempts = maxAttempts;
@@ -33,7 +34,12 @@ public class SmartDoorLockImpl implements SmartDoorLock{
         if (!isLocked){
             throw new IllegalStateException("Impossible to unlock the door lock, it is already locked.");
         }
-        isLocked = !Objects.equals(this.pin, pin);
+
+        if(Objects.equals(this.pin, pin)){
+            isLocked = false;
+        } else {
+            invalidAttempts+=1;
+        }
     }
 
     @Override
@@ -65,7 +71,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public int getFailedAttempts() {
-        return 0;
+        return invalidAttempts;
     }
 
     @Override
