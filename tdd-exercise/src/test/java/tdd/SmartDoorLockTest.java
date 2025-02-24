@@ -111,4 +111,9 @@ public class SmartDoorLockTest {
         lock.unlock(RANDOM_VALID_PIN_2);
         assertTrue(lock.isLocked());
     }
+
+    @Test
+    public void testInitialInvalidAttempt() {
+        assertEquals(lock.getFailedAttempts(), 0);
+    }
 }
