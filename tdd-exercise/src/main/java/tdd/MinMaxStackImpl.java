@@ -1,18 +1,24 @@
 package tdd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MinMaxStackImpl implements MinMaxStack {
 
-    private int counter = 0;
+    private List<Integer> numbers = new ArrayList<>();
 
     @Override
     public void push(int value) {
-        counter+=1;
+        numbers.add(value);
     }
 
     @Override
     public int pop() {
-        throw new IllegalStateException("Can't pop from empty stack");
-//        return 0;
+        if (numbers.isEmpty()){
+            throw new IllegalStateException("Can't pop from empty stack");
+        } else {
+            return numbers.getLast();
+        }
     }
 
     @Override
@@ -40,6 +46,6 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int size() {
-        return counter;
+        return numbers.size();
     }
 }
