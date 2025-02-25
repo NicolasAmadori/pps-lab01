@@ -6,10 +6,12 @@ import java.util.List;
 public class MinMaxStackImpl implements MinMaxStack {
 
     private List<Integer> numbers = new ArrayList<>();
+    private Integer min = null;
 
     @Override
     public void push(int value) {
         numbers.add(value);
+        min = (min == null) ? value : Math.min(min, value);
     }
 
     @Override
@@ -32,8 +34,11 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int getMin() {
-        throw new IllegalStateException("Can't get min from empty stack");
-//        return 0;
+        if(isEmpty()) {
+            throw new IllegalStateException("Can't get min from empty stack");
+        } else {
+            return min;
+        }
     }
 
     @Override

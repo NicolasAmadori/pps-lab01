@@ -89,4 +89,12 @@ class MinMaxStackImplTest {
         minMaxStack.push(RANDOM_NUMBER_1);
         assertFalse(minMaxStack.isEmpty());
     }
+
+    @Test
+    public void testGetMinAfterMultiplePush() {
+        minMaxStack.push(RANDOM_NUMBER_1 - 1);
+        minMaxStack.push(RANDOM_NUMBER_1);
+        minMaxStack.push(RANDOM_NUMBER_1 + 1);
+        assertEquals(RANDOM_NUMBER_1 - 1, minMaxStack.getMin());
+    }
 }
