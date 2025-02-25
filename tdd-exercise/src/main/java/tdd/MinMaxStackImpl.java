@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MinMaxStackImpl implements MinMaxStack {
 
-    private List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers = new ArrayList<>();
     private Integer min = null;
 
     @Override
@@ -16,7 +16,7 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int pop() {
-        if (numbers.isEmpty()){
+        if (isEmpty()){
             throw new IllegalStateException("Can't pop from empty stack");
         } else {
             return numbers.removeLast();
@@ -25,7 +25,7 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int peek() {
-        if (numbers.isEmpty()){
+        if (isEmpty()){
             throw new IllegalStateException("Can't peek from empty stack");
         } else {
             return numbers.getLast();
