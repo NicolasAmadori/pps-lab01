@@ -18,45 +18,33 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int pop() {
-        if (isEmpty()){
-            throw new IllegalStateException("Can't pop from empty stack");
-        } else {
-            Integer last = numbers.removeLast();
-            min = null;
-            max = null;
-            for (Integer number : numbers) {
-                min = (min == null) ? number : Math.min(min, number);
-                max = (max == null) ? number : Math.max(max, number);
-            }
-            return last;
+        assertNotEmpty("Can't pop from empty stack");
+        Integer last = numbers.removeLast();
+        min = null;
+        max = null;
+        for (Integer number : numbers) {
+            min = (min == null) ? number : Math.min(min, number);
+            max = (max == null) ? number : Math.max(max, number);
         }
+        return last;
     }
 
     @Override
     public int peek() {
-        if (isEmpty()){
-            throw new IllegalStateException("Can't peek from empty stack");
-        } else {
-            return numbers.getLast();
-        }
+        assertNotEmpty("Can't peek from empty stack");
+        return numbers.getLast();
     }
 
     @Override
     public int getMin() {
-        if(isEmpty()) {
-            throw new IllegalStateException("Can't get min from empty stack");
-        } else {
-            return min;
-        }
+        assertNotEmpty("Can't get min from empty stack");
+        return min;
     }
 
     @Override
     public int getMax() {
-        if(isEmpty()) {
-            throw new IllegalStateException("Can't get max from empty stack");
-        } else {
-            return max;
-        }
+        assertNotEmpty("Can't get max from empty stack");
+        return max;
     }
 
     @Override
@@ -67,5 +55,11 @@ public class MinMaxStackImpl implements MinMaxStack {
     @Override
     public int size() {
         return numbers.size();
+    }
+
+    private void assertNotEmpty(String message) {
+        if (isEmpty()){
+            throw new IllegalStateException(message);
+        }
     }
 }
