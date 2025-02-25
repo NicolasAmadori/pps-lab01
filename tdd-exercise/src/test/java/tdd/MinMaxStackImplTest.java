@@ -83,4 +83,10 @@ class MinMaxStackImplTest {
         minMaxStack.peek();
         assertEquals(beforeSize, minMaxStack.size());
     }
+
+    @Test
+    public void testIsEmptyAfterPush() {
+        minMaxStack.push(RANDOM_NUMBER_1);
+        assertFalse(minMaxStack.isEmpty());
+    }
 }
