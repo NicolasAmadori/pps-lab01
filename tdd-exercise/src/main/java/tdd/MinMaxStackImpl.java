@@ -23,8 +23,10 @@ public class MinMaxStackImpl implements MinMaxStack {
         } else {
             Integer last = numbers.removeLast();
             min = null;
+            max = null;
             for (Integer number : numbers) {
                 min = (min == null) ? number : Math.min(min, number);
+                max = (max == null) ? number : Math.max(max, number);
             }
             return last;
         }
