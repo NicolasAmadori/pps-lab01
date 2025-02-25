@@ -17,7 +17,7 @@ public class MinMaxStackImpl implements MinMaxStack {
         if (numbers.isEmpty()){
             throw new IllegalStateException("Can't pop from empty stack");
         } else {
-            return numbers.getLast();
+            return numbers.removeLast();
         }
     }
 

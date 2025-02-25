@@ -53,6 +53,14 @@ class MinMaxStackImplTest {
     }
 
     @Test
+    public void testSizeAfterPop() {
+        minMaxStack.push(RANDOM_NUMBER_1);
+        int beforeSize = minMaxStack.size();
+        minMaxStack.pop();
+        assertEquals(beforeSize - 1, minMaxStack.size());
+    }
+
+    @Test
     public void testMultiplePeekResultAfterPush() {
         minMaxStack.push(RANDOM_NUMBER_1);
         assertAll(
