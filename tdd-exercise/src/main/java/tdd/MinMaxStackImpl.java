@@ -7,11 +7,13 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     private final List<Integer> numbers = new ArrayList<>();
     private Integer min = null;
+    private Integer max = null;
 
     @Override
     public void push(int value) {
         numbers.add(value);
         min = (min == null) ? value : Math.min(min, value);
+        max = (max == null) ? value : Math.max(max, value);
     }
 
     @Override
@@ -48,8 +50,11 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int getMax() {
-        throw new IllegalStateException("Can't get max from empty stack");
-//        return 0;
+        if(isEmpty()) {
+            throw new IllegalStateException("Can't get max from empty stack");
+        } else {
+            return max;
+        }
     }
 
     @Override

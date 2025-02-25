@@ -106,4 +106,12 @@ class MinMaxStackImplTest {
         minMaxStack.pop();
         assertEquals(RANDOM_NUMBER_1, minMaxStack.getMin());
     }
+
+    @Test
+    public void testGetMaxAfterMultiplePush() {
+        minMaxStack.push(RANDOM_NUMBER_1 - 1);
+        minMaxStack.push(RANDOM_NUMBER_1);
+        minMaxStack.push(RANDOM_NUMBER_1 + 1);
+        assertEquals(RANDOM_NUMBER_1 + 1, minMaxStack.getMax());
+    }
 }
