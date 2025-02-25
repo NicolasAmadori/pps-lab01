@@ -8,6 +8,9 @@ class MinMaxStackImplTest {
     @Test
     public void testIsEmptyInitially() {
         MinMaxStackImpl minMaxStack = new MinMaxStackImpl();
-        assertTrue(minMaxStack.isEmpty());
+        assertAll(
+                () -> assertTrue(minMaxStack.isEmpty()),
+                () -> assertEquals(0, minMaxStack.size())
+        );
     }
 }
