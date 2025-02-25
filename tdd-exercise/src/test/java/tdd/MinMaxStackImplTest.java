@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
     @Test
-    public void todo() {
-        assertTrue(true);
+    public void testIsEmptyInitially() {
+        MinMaxStackImpl minMaxStack = new MinMaxStackImpl();
+        assertTrue(minMaxStack.isEmpty());
     }
 }
