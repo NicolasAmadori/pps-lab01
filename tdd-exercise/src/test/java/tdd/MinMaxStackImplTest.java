@@ -13,4 +13,15 @@ class MinMaxStackImplTest {
                 () -> assertEquals(0, minMaxStack.size())
         );
     }
+
+    @Test
+    public void testInvalidMethods() {
+        MinMaxStackImpl minMaxStack = new MinMaxStackImpl();
+        assertAll(
+                () -> assertThrows(IllegalStateException.class, minMaxStack::pop),
+                () -> assertThrows(IllegalStateException.class, minMaxStack::peek),
+                () -> assertThrows(IllegalStateException.class, minMaxStack::getMin),
+                () -> assertThrows(IllegalStateException.class, minMaxStack::getMax)
+        );
+    }
 }
