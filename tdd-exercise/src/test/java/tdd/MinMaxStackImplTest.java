@@ -60,4 +60,12 @@ class MinMaxStackImplTest {
                 () -> assertEquals(RANDOM_NUMBER_1, minMaxStack.peek())
         );
     }
+
+    @Test
+    public void testSizeAfterPeek() {
+        minMaxStack.push(RANDOM_NUMBER_1);
+        int beforeSize = minMaxStack.size();
+        minMaxStack.peek();
+        assertEquals(beforeSize, minMaxStack.size());
+    }
 }
