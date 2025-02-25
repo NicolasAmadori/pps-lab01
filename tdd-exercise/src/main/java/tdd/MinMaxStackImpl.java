@@ -2,9 +2,11 @@ package tdd;
 
 public class MinMaxStackImpl implements MinMaxStack {
 
+    private int counter = 0;
+
     @Override
     public void push(int value) {
-
+        counter+=1;
     }
 
     @Override
@@ -38,6 +40,6 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int size() {
-        return 0;
+        return counter;
     }
 }
