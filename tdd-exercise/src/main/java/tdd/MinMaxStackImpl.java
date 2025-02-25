@@ -19,7 +19,12 @@ public class MinMaxStackImpl implements MinMaxStack {
         if (isEmpty()){
             throw new IllegalStateException("Can't pop from empty stack");
         } else {
-            return numbers.removeLast();
+            Integer last = numbers.removeLast();
+            min = null;
+            for (Integer number : numbers) {
+                min = (min == null) ? number : Math.min(min, number);
+            }
+            return last;
         }
     }
 
