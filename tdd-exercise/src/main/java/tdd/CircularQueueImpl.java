@@ -17,7 +17,9 @@ public class CircularQueueImpl implements CircularQueue {
     @Override
     public int pop() {
         assertNotEmpty("Can't pop, there are no values in the queue.");
-        return val;
+        int copy = val;
+        val = null;
+        return copy;
     }
 
     @Override

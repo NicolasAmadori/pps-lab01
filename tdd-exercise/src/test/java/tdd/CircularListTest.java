@@ -42,6 +42,16 @@ public class CircularListTest {
     }
 
     @Test
+    public void testPopRemovalAfterPush() {
+        queue.push(5);
+        queue.pop();
+        assertAll(
+                () -> assertThrows(IllegalStateException.class, queue::peek),
+                () -> assertThrows(IllegalStateException.class, queue::pop)
+        );
+    }
+
+    @Test
     public void testSize() {
         assertEquals(QUEUE_SIZE, queue.size());
     }
