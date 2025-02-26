@@ -12,6 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CircularListTest {
 
     public static final int QUEUE_SIZE = 3;
+    public static final int RANDOM_NUMBER_1 = 5;
+    public static final int RANDOM_NUMBER_2 = 7;
+    public static final int RANDOM_NUMBER_3 = 1;
+
     CircularQueue queue;
 
     @BeforeEach
@@ -31,19 +35,19 @@ public class CircularListTest {
 
     @Test
     public void testPeekAfterPush() {
-        queue.push(5);
-        assertEquals(5, queue.peek());
+        queue.push(RANDOM_NUMBER_1);
+        assertEquals(RANDOM_NUMBER_1, queue.peek());
     }
 
     @Test
     public void testPopReturnAfterPush() {
-        queue.push(5);
-        assertEquals(5, queue.pop());
+        queue.push(RANDOM_NUMBER_1);
+        assertEquals(RANDOM_NUMBER_1, queue.pop());
     }
 
     @Test
     public void testPopRemovalAfterPush() {
-        queue.push(5);
+        queue.push(RANDOM_NUMBER_1);
         queue.pop();
         assertAll(
                 () -> assertThrows(IllegalStateException.class, queue::peek),
@@ -58,9 +62,9 @@ public class CircularListTest {
 
     @Test
     public void testPeekAfterMultiplePush() {
-        queue.push(5);
-        queue.push(7);
-        queue.push(2);
-        assertEquals(2, queue.peek());
+        queue.push(RANDOM_NUMBER_1);
+        queue.push(RANDOM_NUMBER_2);
+        queue.push(RANDOM_NUMBER_3);
+        assertEquals(RANDOM_NUMBER_3, queue.peek());
     }
 }
