@@ -10,7 +10,12 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int pop() {
-        throw new IllegalStateException("There are no values in the queue");
+        throw new IllegalStateException("Can't pop, there are no values in the queue.");
+    }
+
+    @Override
+    public int peek() {
+        throw new IllegalStateException("Can't peek, there are no values in the queue.");
     }
 
     @Override

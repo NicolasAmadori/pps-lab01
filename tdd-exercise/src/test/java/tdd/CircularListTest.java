@@ -25,6 +25,11 @@ public class CircularListTest {
     }
 
     @Test
+    public void testPeekWithoutPush() {
+        assertThrows(IllegalStateException.class, queue::peek);
+    }
+
+    @Test
     public void testSize() {
         assertEquals(QUEUE_SIZE, queue.size());
     }

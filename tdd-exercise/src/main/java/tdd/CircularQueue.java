@@ -17,5 +17,7 @@ public interface CircularQueue {
 
     int pop();
 
+    int peek();
+
     int size();
 }
