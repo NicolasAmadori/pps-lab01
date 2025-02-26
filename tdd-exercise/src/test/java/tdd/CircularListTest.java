@@ -21,7 +21,7 @@ public class CircularListTest {
 
     @Test
     public void testPopWithoutPush() {
-        assertThrows(IllegalStateException.class, queue::read);
+        assertThrows(IllegalStateException.class, queue::pop);
     }
 
     @Test

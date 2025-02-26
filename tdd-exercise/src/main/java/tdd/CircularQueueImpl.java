@@ -9,7 +9,7 @@ public class CircularQueueImpl implements CircularQueue {
     }
 
     @Override
-    public int read() {
+    public int pop() {
         throw new IllegalStateException("There are no values in the queue");
     }
 
