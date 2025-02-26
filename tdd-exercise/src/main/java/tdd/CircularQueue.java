@@ -16,4 +16,6 @@ package tdd;
 public interface CircularQueue {
 
     int read();
+
+    int size();
 }
