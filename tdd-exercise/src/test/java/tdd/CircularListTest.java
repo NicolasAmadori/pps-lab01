@@ -1,6 +1,7 @@
 package tdd;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,15 +10,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * The test suite for testing the CircularList implementation
  */
 public class CircularListTest {
+
+    public static final int QUEUE_SIZE = 3;
+    CircularQueue queue;
+
+    @BeforeEach
+    public void beforeEach() {
+         queue = new CircularQueueImpl(QUEUE_SIZE);
+    }
+
     @Test
     public void testPopWithoutPush() {
-        CircularQueue queue = new CircularQueueImpl(3);
         assertThrows(IllegalStateException.class, queue::read);
     }
 
     @Test
     public void testSize() {
-        CircularQueue queue = new CircularQueueImpl(3);
-        assertEquals(3, queue.size());
+        assertEquals(QUEUE_SIZE, queue.size());
     }
 }
