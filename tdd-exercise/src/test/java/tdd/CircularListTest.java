@@ -36,6 +36,12 @@ public class CircularListTest {
     }
 
     @Test
+    public void testPopReturnAfterPush() {
+        queue.push(5);
+        assertEquals(5, queue.pop());
+    }
+
+    @Test
     public void testSize() {
         assertEquals(QUEUE_SIZE, queue.size());
     }
