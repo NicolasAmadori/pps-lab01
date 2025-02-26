@@ -15,6 +15,8 @@ package tdd;
  */
 public interface CircularQueue {
 
+    void push(int val);
+
     int pop();
 
     int peek();

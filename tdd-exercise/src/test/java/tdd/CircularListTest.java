@@ -30,6 +30,12 @@ public class CircularListTest {
     }
 
     @Test
+    public void testPeekAfterPush() {
+        queue.push(5);
+        assertEquals(5, queue.peek());
+    }
+
+    @Test
     public void testSize() {
         assertEquals(QUEUE_SIZE, queue.size());
     }

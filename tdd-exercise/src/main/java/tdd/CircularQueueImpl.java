@@ -3,9 +3,15 @@ package tdd;
 public class CircularQueueImpl implements CircularQueue {
 
     final int size;
+    Integer val;
 
     public CircularQueueImpl(int size) {
         this.size = size;
+    }
+
+    @Override
+    public void push(int val) {
+        this.val = val;
     }
 
     @Override
@@ -15,7 +21,11 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int peek() {
-        throw new IllegalStateException("Can't peek, there are no values in the queue.");
+        if(val == null) {
+            throw new IllegalStateException("Can't peek, there are no values in the queue.");
+        } else {
+            return val;
+        }
     }
 
     @Override
